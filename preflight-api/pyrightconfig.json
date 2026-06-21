@@ -1,0 +1,9 @@
+{
+  "pythonVersion": "3.9",
+  "pythonPlatform": "Darwin",
+  "extraPaths": [
+    "/Users/javeriataj/Library/Python/3.9/lib/python/site-packages"
+  ],
+  "typeCheckingMode": "off",
+  "useLibraryCodeForTypes": true
+}

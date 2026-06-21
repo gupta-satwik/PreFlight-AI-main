@@ -1,0 +1,28 @@
+name: Preflight Supply Chain Scan
+
+on:
+  pull_request:
+    paths:
+      - 'package-lock.json'
+
+# Required permissions for Preflight to post comments and set status checks
+permissions:
+  pull-requests: write
+  statuses: write
+  contents: read
+
+jobs:
+  preflight:
+    name: Preflight — Dependency Security Scan
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run Preflight Supply Chain Scan
+        uses: preflight-ai/preflight@v1.0.0
+        # Pin to a full SHA for production:
+        # uses: preflight-ai/preflight@<full-sha>
+        with:
+          lockfile: package-lock.json
+          fail_on_block: 'true'

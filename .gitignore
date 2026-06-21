@@ -1,0 +1,32 @@
+# Dependencies
+node_modules/
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+env/
+
+# Build output (except dist/ — GitHub Actions requires pre-built dist)
+*.egg-info/
+dist/*.map
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# IDE / OS
+.idea/
+.vscode/
+*.swp
+.DS_Store
+Thumbs.db
+
+# Claude Code local config
+.claude/
+
+# Python
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/

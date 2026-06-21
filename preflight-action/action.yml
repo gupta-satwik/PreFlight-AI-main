@@ -1,0 +1,34 @@
+name: 'Preflight Supply Chain Scan'
+description: 'Behavioral pre-execution interceptor for npm packages — detects novel malicious dependencies before they run'
+
+inputs:
+  lockfile:
+    description: 'Path to package-lock.json'
+    required: false
+    default: 'package-lock.json'
+  api_url:
+    description: 'Preflight API URL'
+    required: false
+    default: 'https://preflight-api.onrender.com'
+  fail_on_block:
+    description: 'Exit the workflow step with failure if verdict is BLOCK'
+    required: false
+    default: 'true'
+
+outputs:
+  verdict:
+    description: 'PASS, WARN, or BLOCK'
+  scan_id:
+    description: 'MongoDB scan ID — link to https://preflight.dev/scans/:id'
+  confidence:
+    description: 'Confidence score 0.0–1.0'
+
+runs:
+  using: 'node20'
+  main: 'dist/index.js'
+
+# Required permissions in the workflow file that uses this action:
+# permissions:
+#   pull-requests: write   # post PR comment
+#   statuses: write        # set commit status check
+#   contents: read         # read package-lock.json

